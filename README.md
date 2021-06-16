@@ -1,6 +1,7 @@
 # EnvBakery
 
 [![npm version](https://badge.fury.io/js/%40elemental-concept%2Fenv-bakery.svg)](https://badge.fury.io/js/%40elemental-concept%2Fenv-bakery)
+[![Build Status](https://travis-ci.com/elementalconcept/env-bakery.svg?branch=master)](https://travis-ci.com/elementalconcept/env-bakery)
 
 EnvBakery is an extension for Angular framework that loads environment variables from an `.env` file (located
 in `/assets`) into Angular *environment* on application start-up. Normally Angular environment is baked in into the
