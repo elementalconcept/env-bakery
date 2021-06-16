@@ -1,6 +1,7 @@
 {
   "name": "env-bakery",
   "version": "0.0.0",
+  "license": "BSD-2-Clause",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
