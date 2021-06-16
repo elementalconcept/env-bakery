@@ -4,10 +4,12 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build lib --prod",
+    "watch": "ng build lib --watch",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "publish": "npm publish dist/lib"
   },
   "private": true,
   "dependencies": {
@@ -19,6 +21,7 @@
     "@angular/platform-browser": "~11.2.11",
     "@angular/platform-browser-dynamic": "~11.2.11",
     "@angular/router": "~11.2.11",
+    "dotenv": "^10.0.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"
@@ -37,6 +40,7 @@
     "karma-coverage": "~2.0.3",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "^1.5.0",
+    "ng-packagr": "^11.0.0",
     "protractor": "~7.0.0",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",

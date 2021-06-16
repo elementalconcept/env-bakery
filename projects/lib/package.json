@@ -1,0 +1,12 @@
+{
+  "name": "@elemental-concept/env-bakery",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": ">= 9 < 13",
+    "@angular/core": ">= 9 < 13",
+    "dotenv": ">=10"
+  },
+  "dependencies": {
+    "tslib": "^2.0.0"
+  }
+}

@@ -8,6 +8,12 @@
     "strict": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
+    "paths": {
+      "@elemental-concept/env-bakery": [
+        "dist/lib/lib",
+        "dist/lib"
+      ]
+    },
     "sourceMap": true,
     "declaration": false,
     "downlevelIteration": true,
