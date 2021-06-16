@@ -7,7 +7,7 @@
     "start": "ng serve",
     "build": "ng build lib --prod",
     "watch": "ng build lib --watch",
-    "test": "ng test",
+    "test": "ng test lib",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "publish": "npm publish dist/lib"
