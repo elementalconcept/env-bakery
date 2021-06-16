@@ -53,6 +53,6 @@ export class EnvConverter {
       return defaultValue;
     }
 
-    return truthyValues.includes(typeof this.value.toLowerCase());
+    return truthyValues.includes(this.value.toLowerCase());
   };
 }
