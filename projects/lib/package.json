@@ -1,6 +1,7 @@
 {
   "name": "@elemental-concept/env-bakery",
   "version": "0.0.1",
+  "private": false,
   "peerDependencies": {
     "@angular/common": ">= 9 < 13",
     "@angular/core": ">= 9 < 13"
