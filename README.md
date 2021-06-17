@@ -172,7 +172,7 @@ The easiest way to use `parbake` is to create a build hook in your `package.json
 {
   "scripts": {
     "prebuild": "parbake src/assets/.env PRODUCTION,API_BASE_URL,FB_API_KEY,FB_API_SECRET",
-    "build": "ng build lib --prod"
+    "build": "ng build --prod"
   }
 }
 ```
