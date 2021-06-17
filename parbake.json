@@ -1,0 +1,8 @@
+{
+  "whitelist": [
+    "PRODUCTION",
+    "API_BASE_URL",
+    "FB_API_KEY",
+    "FB_API_SECRET"
+  ]
+}
