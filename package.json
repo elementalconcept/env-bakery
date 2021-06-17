@@ -5,6 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "prebuild": "node copy-assets.js",
     "build": "ng build lib --prod",
     "watch": "ng build lib --watch",
     "test": "ng test lib",

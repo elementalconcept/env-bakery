@@ -46,3 +46,6 @@ testem.log
 Thumbs.db
 src/assets/.env
 projects/lib/src/lib/parbake-runner.js
+projects/lib/README.md
+projects/lib/LICENSE
+projects/lib/LICENSE-dotenv
