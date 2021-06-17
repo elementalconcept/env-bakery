@@ -10,6 +10,9 @@ breaks [The Twelve-Factor App](http://12factor.net/config) methodology.
 
 EnvBakery also provides direct access to variables specified in an `.env` file.
 
+Some environments might now allow file injection and will instead rely on build process to consume environment variables
+from OS. `parbake` CLI utility is included for such cases.
+
 EnvBakery is using `.env` parser extracted from [dotenv](https://github.com/motdotla/dotenv) by Scott Motte. Sadly,
 dotenv tries to access Nodejs APIs even when only using its parser. This obviously fails when used in a browser
 environment. So the parser code had to be extracted to avoid dotenv dependency entirely.
@@ -155,6 +158,53 @@ If using Docker, then volumes are usually used for that:
 ```shell
 $ docker run -v $(pwd)/.env:/root/app/dist/assets/.env my_docker_image
 ```
+
+## parbake CLI utility
+
+Some deployment environments might now allow file injection and will instead rely on build process to consume
+environment variables from OS. [Netlify](https://www.netlify.com/) is a good example of such deployment environment. It
+only allows to specify environment through its web interface and then it runs `$ npm build` on each deploy. `parbake`
+CLI utility is included for such cases.
+
+The easiest way to use `parbake` is to create a build hook in your `package.json`:
+
+```json
+{
+  "scripts": {
+    "prebuild": "parbake src/assets/.env PRODUCTION,API_BASE_URL,FB_API_KEY,FB_API_SECRET",
+    "build": "ng build lib --prod"
+  }
+}
+```
+
+It will consume environment variables defined in a host OS and will create an `.env` with their contents. To avoid
+exposing the whole of OS environment to the public, `parbake` requires a whitelist, which can either be specified as a
+command line argument or loaded from a JSON configuration file.
+
+Usage:
+
+```shell
+$ parbake [output] [whitelist]
+$ parbake [output] --config=[filename]
+```
+
+Whitelist is a comma-separated list of environment variable names.
+
+Configuration file must be in JSON format, should contain a single object with a single property called `whitelist`,
+which in turn should contain a list of strings. For example:
+
+```json
+{
+  "whitelist": [
+    "PRODUCTION",
+    "API_BASE_URL",
+    "FB_API_KEY",
+    "FB_API_SECRET"
+  ]
+}
+```
+
+You can also install EnvBakery as a global package and use `parbake` locally to dump your environment into a file.
 
 ## API
 
