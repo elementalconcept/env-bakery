@@ -177,7 +177,7 @@ The easiest way to use `parbake` is to create a build hook in your `package.json
 }
 ```
 
-It will consume environment variables defined in a host OS and will create an `.env` with their contents. To avoid
+It will consume environment variables defined in a host OS and will create an `.env` file with their contents. To avoid
 exposing the whole of OS environment to the public, `parbake` requires a whitelist, which can either be specified as a
 command line argument or loaded from a JSON configuration file.
 
