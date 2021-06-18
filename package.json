@@ -12,7 +12,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "publish": "npm publish dist/lib",
-    "parbake": "tsc projects/lib/src/lib/parbake-runner.ts && node projects/lib/src/lib/parbake-runner.js"
+    "parbake": "node projects/lib/assets/bin/parbake.js"
   },
   "private": true,
   "dependencies": {
