@@ -10,7 +10,7 @@ breaks [The Twelve-Factor App](http://12factor.net/config) methodology.
 
 EnvBakery also provides direct access to variables specified in an `.env` file.
 
-Some environments might now allow file injection and will instead rely on build process to consume environment variables
+Some environments might not allow file injection and will instead rely on build process to consume environment variables
 from OS. `parbake` CLI utility is included for such cases.
 
 EnvBakery is using `.env` parser extracted from [dotenv](https://github.com/motdotla/dotenv) by Scott Motte. Sadly,
@@ -161,7 +161,7 @@ $ docker run -v $(pwd)/.env:/root/app/dist/assets/.env my_docker_image
 
 ## parbake CLI utility
 
-Some deployment environments might now allow file injection and will instead rely on build process to consume
+Some deployment environments might not allow file injection and will instead rely on build process to consume
 environment variables from OS. [Netlify](https://www.netlify.com/) is a good example of such deployment environment. It
 only allows to specify environment through its web interface and then it runs `$ npm build` on each deploy. `parbake`
 CLI utility is included for such cases.
