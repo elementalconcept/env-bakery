@@ -14,4 +14,3 @@ bakeEnv(() => import('./environments/environment')).then((environment: any) => {
     .bootstrapModule(AppModule)
     .catch(err => console.error(err));
 });
-

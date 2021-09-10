@@ -50,7 +50,6 @@ FIREBASE_STORAGE_BUCKET=my-cool-app.appspot.com
 FIREBASE_MESSAGING_SENDER_ID=123456789
 FIREBASE_APP_ID=1:000:web:999
 FIREBASE_MEASUREMENT_ID=G-ABCDEF
-
 ```
 
 ### Convert Angular environment into function
