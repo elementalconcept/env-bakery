@@ -31,5 +31,6 @@
   ],
   "bin": {
     "parbake": "assets/bin/parbake.js"
-  }
+  },
+  "schematics": "./schematics/collection.json"
 }
