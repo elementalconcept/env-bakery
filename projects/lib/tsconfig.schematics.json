@@ -13,7 +13,7 @@
     "noImplicitAny": true,
     "noImplicitThis": true,
     "noUnusedParameters": false,
-    "noUnusedLocals": true,
+    "noUnusedLocals": false,
     "rootDir": "schematics",
     "outDir": "../../dist/lib/schematics",
     "skipDefaultLibCheck": true,

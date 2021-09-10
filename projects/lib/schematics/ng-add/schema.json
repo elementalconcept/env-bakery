@@ -1,1 +1,9 @@
-{}
+{
+  "$schema": "https://json-schema.org/schema",
+  "$id": "SchematicsMyService",
+  "title": "My Service Schema",
+  "type": "object",
+  "properties": {
+  },
+  "required": []
+}
