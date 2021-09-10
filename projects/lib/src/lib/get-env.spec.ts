@@ -3,7 +3,7 @@ import { EnvConverter, getEnv } from './get-env';
 
 describe('get-env.ts', () => {
   beforeEach(() => {
-    Object.keys(bakedEnv).forEach(key => delete bakedEnv[ key ]);
+    Object.keys(bakedEnv).forEach(key => delete bakedEnv[key]);
   });
 
   describe('getEnv', () => {
@@ -59,14 +59,14 @@ describe('get-env.ts', () => {
 
     describe('array', () => {
       it('should return correct array values', () => {
-        expect(new EnvConverter('123,234,345').array()).toEqual([ '123', '234', '345' ]);
-        expect(new EnvConverter('').array()).toEqual([ '' ]);
-        expect(new EnvConverter('111-222-333').array('-')).toEqual([ '111', '222', '333' ]);
+        expect(new EnvConverter('123,234,345').array()).toEqual(['123', '234', '345']);
+        expect(new EnvConverter('').array()).toEqual(['']);
+        expect(new EnvConverter('111-222-333').array('-')).toEqual(['111', '222', '333']);
       });
 
       it('should return defaultValue on incorrect values', () => {
         expect(new EnvConverter(undefined).array()).toEqual([]);
-        expect(new EnvConverter(undefined).array(',', [ '10' ])).toEqual([ '10' ]);
+        expect(new EnvConverter(undefined).array(',', ['10'])).toEqual(['10']);
       });
     });
 

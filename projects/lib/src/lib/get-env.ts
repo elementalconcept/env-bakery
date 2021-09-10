@@ -1,7 +1,7 @@
 import { bakedEnv } from './baked-env';
 
 export function getEnv(key: string): EnvConverter {
-  return new EnvConverter(bakedEnv[ key ]);
+  return new EnvConverter(bakedEnv[key]);
 }
 
 export class EnvConverter {
@@ -46,9 +46,9 @@ export class EnvConverter {
   };
 
   boolean = (
-    truthyValues = [ 'true', 't', '1', 'on', 'enable', 'enabled', 'yes' ],
-    defaultValue = false): boolean => {
-
+    truthyValues = ['true', 't', '1', 'on', 'enable', 'enabled', 'yes'],
+    defaultValue = false
+  ): boolean => {
     if (typeof this.value !== 'string') {
       return defaultValue;
     }

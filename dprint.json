@@ -9,7 +9,7 @@
     "useBraces": "always",
     "bracePosition": "sameLine",
     "singleBodyPosition": "nextLine",
-    "nextControlFlowPosition": "nextLine",
+    "nextControlFlowPosition": "sameLine",
     "trailingCommas": "never",
     "arrowFunction.useParentheses": "preferNone",
     "semiColons": "always"
