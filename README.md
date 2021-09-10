@@ -17,7 +17,29 @@ EnvBakery is using `.env` parser extracted from [dotenv](https://github.com/motd
 dotenv tries to access Nodejs APIs even when only using its parser. This obviously fails when used in a browser
 environment. So the parser code had to be extracted to avoid dotenv dependency entirely.
 
-## Installation
+## Installation With Angular CLI
+
+EnvBakery comes with experimental installation schematic which should be invoked through Angular CLI. This method
+will install the library itself and will try to update the following files:
+
+- `src/environments/environment.ts`
+- `src/main.ts`
+- `angular.json`
+
+It will also create boilerplate `src/assets/.env` and `src/assets/.env.example` files.
+
+Before using this installation method, make sure that you have committed all file changes.
+If you encounter any issues - please create a bug report.
+
+To install using Angular CLI run:
+
+```shell
+$ ng add @elemental-concept/env-bakery
+```
+
+Once it finishes, feel free to remove unneeded environment files.
+
+## Manual Installation
 
 ### Install the library
 
