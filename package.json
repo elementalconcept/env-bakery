@@ -7,6 +7,7 @@
     "start": "ng serve",
     "prebuild": "node copy-assets.js",
     "build": "ng build lib --configuration production",
+    "postbuild": "npm run build:schematics",
     "watch": "ng build lib --watch",
     "test": "ng test lib",
     "lint": "ng lint",
@@ -15,7 +16,12 @@
     "parbake": "node projects/lib/assets/bin/parbake.js",
     "format": "dprint fmt",
     "format:check": "dprint check",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "build:schematics": "tsc -p projects/lib/tsconfig.schematics.json",
+    "copy:schemas": "cpy --cwd=projects/lib --parents schematics/*/schema.json ../../dist/lib",
+    "copy:files": "cpy --cwd=projects/lib --parents schematics/*/files/** ../../dist/lib/",
+    "copy:collection": "cpy --cwd=projects/lib schematics/collection.json ../../dist/lib/schematics",
+    "postbuild:schematics": "npm run copy:schemas && npm run copy:files && npm run copy:collection"
   },
   "private": true,
   "dependencies": {
@@ -39,7 +45,9 @@
     "@types/jasmine": "~3.6.0",
     "@types/node": "^12.11.1",
     "codelyzer": "^6.0.0",
+    "cpy-cli": "^3.1.1",
     "dprint": "^0.17.0",
+    "husky": "^7.0.0",
     "jasmine-core": "~3.6.0",
     "jasmine-spec-reporter": "~5.0.0",
     "karma": "~6.3.4",
@@ -51,7 +59,6 @@
     "protractor": "~7.0.0",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
-    "typescript": "~4.3.5",
-    "husky": "^7.0.0"
+    "typescript": "~4.3.5"
   }
 }
