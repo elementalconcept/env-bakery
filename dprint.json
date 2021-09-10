@@ -27,7 +27,8 @@
     "**/node_modules",
     "**/dist",
     "**/*-lock.json",
-    "**/*.d.ts"
+    "**/*.d.ts",
+    "**/test.ts"
   ],
   "plugins": [
     "https://plugins.dprint.dev/typescript-0.55.0.wasm",
