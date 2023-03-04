@@ -5,7 +5,7 @@ export function getEnv(key: string): EnvConverter {
 }
 
 export class EnvConverter {
-  constructor(private readonly value: any) {
+  constructor(private readonly value: unknown) {
   }
 
   raw = () => this.value;

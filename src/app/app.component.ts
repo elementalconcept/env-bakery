@@ -11,5 +11,6 @@ export class AppComponent {
   readonly env = JSON.stringify(environment(), null, 2);
 
   constructor() {
+    console.log(this.env);
   }
 }

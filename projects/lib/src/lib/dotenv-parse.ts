@@ -10,9 +10,9 @@ const RE_NEWLINES = /\\n/g;
 const NEWLINES_MATCH = /\r\n|\n|\r/;
 
 // Parses src into an Object
-export function parse<T extends DotenvParseOutput = DotenvParseOutput>(src: string, options?: DotenvParseOptions): T {
+export function parse(src: string, options?: DotenvParseOptions): DotenvParseOutput {
   const debug = Boolean(options && options.debug);
-  const obj: T = {} as T;
+  const obj: DotenvParseOutput = {};
 
   // convert Buffers before splitting into lines and processing
   src.toString().split(NEWLINES_MATCH).forEach((line, idx) => {
@@ -23,7 +23,7 @@ export function parse<T extends DotenvParseOutput = DotenvParseOutput>(src: stri
     if (keyValueArr != null) {
       const key = keyValueArr[1];
       // default undefined or missing values to empty string
-      let val = (keyValueArr[2] || '');
+      let val = keyValueArr[2] || '';
       const end = val.length - 1;
       const isDoubleQuoted = val[0] === '"' && val[end] === '"';
       const isSingleQuoted = val[0] === '\'' && val[end] === '\'';
@@ -41,7 +41,6 @@ export function parse<T extends DotenvParseOutput = DotenvParseOutput>(src: stri
         val = val.trim();
       }
 
-      // @ts-ignore
       obj[key] = val;
     } else if (debug) {
       console.log(`did not match key and value when parsing line ${idx + 1}: ${line}`);

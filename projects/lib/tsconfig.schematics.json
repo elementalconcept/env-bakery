@@ -1,11 +1,25 @@
+/* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
   "compilerOptions": {
     "baseUrl": ".",
+    "outDir": "../../dist/lib/schematics",
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noImplicitReturns": true,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "useDefineForClassFields": false,
+    "declaration": true,
+    "declarationMap": false,
+    "inlineSources": true,
+    "types": ["node"],
     "lib": [
-      "es2018",
+      "ES2022",
       "dom"
     ],
-    "declaration": true,
     "module": "commonjs",
     "moduleResolution": "node",
     "noEmitOnError": true,
@@ -15,16 +29,11 @@
     "noUnusedParameters": false,
     "noUnusedLocals": false,
     "rootDir": "schematics",
-    "outDir": "../../dist/lib/schematics",
     "skipDefaultLibCheck": true,
     "skipLibCheck": true,
     "sourceMap": true,
     "strictNullChecks": true,
-    "target": "es6",
-    "types": [
-      "jasmine",
-      "node"
-    ]
+    "target": "ES2022"
   },
   "include": [
     "schematics/**/*"
