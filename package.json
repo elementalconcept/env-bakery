@@ -18,9 +18,9 @@
     "format:check": "dprint check",
     "prepare": "husky install",
     "build:schematics": "tsc -p projects/lib/tsconfig.schematics.json",
-    "copy:schemas": "cpy --cwd=projects/lib --parents schematics/*/schema.json ../../dist/lib",
-    "copy:files": "cpy --cwd=projects/lib --parents schematics/*/files/** ../../dist/lib/",
-    "copy:collection": "cpy --cwd=projects/lib schematics/collection.json ../../dist/lib/schematics",
+    "copy:schemas": "cpy --cwd=projects/lib schematics/**/schema.json dist/lib/schematics",
+    "copy:files": "cpy --cwd=projects/lib schematics/**/files/** dist/lib/schematics",
+    "copy:collection": "cpy --cwd=projects/lib schematics/collection.json ../../dist/lib",
     "postbuild:schematics": "npm run copy:schemas && npm run copy:files && npm run copy:collection"
   },
   "private": true,
