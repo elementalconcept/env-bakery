@@ -10,9 +10,9 @@ const RE_NEWLINES = /\\n/g;
 const NEWLINES_MATCH = /\r\n|\n|\r/;
 
 // Parses src into an Object
-export function parse<T extends DotenvParseOutput = DotenvParseOutput>(src: string, options?: DotenvParseOptions): T {
+export function parse(src: string, options?: DotenvParseOptions): DotenvParseOutput {
   const debug = Boolean(options && options.debug);
-  const obj: T = {} as T;
+  const obj: DotenvParseOutput = {};
 
   // convert Buffers before splitting into lines and processing
   src.toString().split(NEWLINES_MATCH).forEach((line, idx) => {
