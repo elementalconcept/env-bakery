@@ -31,8 +31,8 @@
     "**/test.ts"
   ],
   "plugins": [
-    "https://plugins.dprint.dev/typescript-0.55.0.wasm",
-    "https://plugins.dprint.dev/json-0.13.0.wasm",
-    "https://plugins.dprint.dev/markdown-0.10.0.wasm"
+    "https://plugins.dprint.dev/typescript-0.83.0.wasm",
+    "https://plugins.dprint.dev/json-0.17.0.wasm",
+    "https://plugins.dprint.dev/markdown-0.15.2.wasm"
   ]
 }
