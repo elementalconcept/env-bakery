@@ -41,7 +41,6 @@ export function parse<T extends DotenvParseOutput = DotenvParseOutput>(src: stri
         val = val.trim();
       }
 
-      // @ts-ignore
       obj[key] = val;
     } else if (debug) {
       console.log(`did not match key and value when parsing line ${idx + 1}: ${line}`);

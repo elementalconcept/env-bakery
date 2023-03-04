@@ -12,7 +12,7 @@ import {
 } from '@angular-devkit/schematics';
 import { NodePackageInstallTask } from '@angular-devkit/schematics/tasks';
 
-export function ngAdd(options: any): Rule {
+export function ngAdd(options: unknown): Rule {
   return (tree: Tree, context: SchematicContext) => {
     context.addTask(new NodePackageInstallTask());
 
@@ -26,7 +26,7 @@ export function ngAdd(options: any): Rule {
   };
 }
 
-function boilerplate(options: any): Rule {
+function boilerplate(options: unknown): Rule {
   return mergeWith(
     apply(
       url('./files'),
@@ -167,7 +167,7 @@ function finalize(): Rule {
   };
 }
 
-function eachKey(object: any, key: string, callback: (source: any, key: string) => void): void {
+function eachKey(object: object, key: string, callback: (source: object, key: string) => void): void {
   Object.keys(object)
     .forEach(k => {
       if (k === key) {

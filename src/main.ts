@@ -4,7 +4,7 @@ import { bakeEnv } from '@elemental-concept/env-bakery';
 
 import { AppModule } from './app/app.module';
 
-bakeEnv(() => import('./environments/environment')).then((environment: any) => {
+bakeEnv(() => import('./environments/environment')).then((_environment: unknown) => {
   platformBrowserDynamic()
     .bootstrapModule(AppModule)
     .catch(err => console.error(err));
