@@ -25,6 +25,8 @@
   ],
   "excludes": [
     "**/node_modules",
+    "**/.angular",
+    "**/.husky",
     "**/dist",
     "**/*-lock.json",
     "**/*.d.ts",
