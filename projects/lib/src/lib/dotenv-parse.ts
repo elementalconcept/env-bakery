@@ -23,7 +23,7 @@ export function parse<T extends DotenvParseOutput = DotenvParseOutput>(src: stri
     if (keyValueArr != null) {
       const key = keyValueArr[1];
       // default undefined or missing values to empty string
-      let val = (keyValueArr[2] || '');
+      let val = keyValueArr[2] || '';
       const end = val.length - 1;
       const isDoubleQuoted = val[0] === '"' && val[end] === '"';
       const isSingleQuoted = val[0] === '\'' && val[end] === '\'';
