@@ -231,7 +231,11 @@ which in turn should contain a list of strings. For example:
 ```
 
 Alternatively you can specify required environment variables as a single JSON string using `--json` argument.
-Make sure to escape double quotes correctly!
+Make sure to escape double quotes correctly! Example:
+
+```shell
+$ npx @elemental-concept/env-bakery src/assets/.env --json='{\"PRODUCTION\": \"true\"}'
+```
 
 You can also install EnvBakery as a global package and use `parbake` locally to dump your environment into a file.
 
