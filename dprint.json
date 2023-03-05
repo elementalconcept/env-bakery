@@ -18,7 +18,8 @@
     "newLineKind": "system"
   },
   "markdown": {
-    "emphasisKind": "asterisks"
+    "emphasisKind": "asterisks",
+    "newLineKind": "system"
   },
   "includes": [
     "**/*.{ts,json,md}"
