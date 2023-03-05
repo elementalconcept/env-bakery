@@ -47,11 +47,25 @@ function updateEnvironment(): Rule {
   const prodFlag = 'production: false';
 
   const envStartReplace = 'export const environment = () => ({';
+  const envStartReplaceNew = 'export const environment = (): Environment => ({';
   const envEndReplace = '});';
   const prodFlagReplace = `production: getEnv('PRODUCTION').boolean()`;
 
+  const importHeader = `import { getEnv } from '@elemental-concept/env-bakery';\n`;
+  const interfaceDecl = `export type Environment = {\n  production: boolean;\n};\n`;
+
   return (tree: Tree) => {
     const path = 'src/environments/environment.ts';
+
+    if (!tree.exists(path)) {
+      console.log('Environment file was not found, creating empty one.');
+      tree.create(
+        path,
+        [importHeader, interfaceDecl, envStartReplaceNew, `  ${prodFlagReplace}`, envEndReplace].join('\n')
+      );
+      return tree;
+    }
+
     const file = tree.read(path);
     const source = file?.toString();
 
@@ -67,7 +81,7 @@ function updateEnvironment(): Rule {
     if (
       envStartIndex >= 0 && prodFlagIndex > envStartIndex && envEndIndex > envStartIndex && envEndIndex > prodFlagIndex
     ) {
-      const result = `import { getEnv } from '@elemental-concept/env-bakery';\n\n`
+      const result = importHeader + '\n'
         + source
           .replace(envStart, envStartReplace)
           .replace(envEnd, envEndReplace)
