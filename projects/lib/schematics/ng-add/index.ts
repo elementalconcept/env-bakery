@@ -83,7 +83,7 @@ function updateEnvironment(): Rule {
     ) {
       const result = importHeader + '\n'
         + source
-          .replace(envStart, envStartReplace)
+          .replace(envStart, `${interfaceDecl}\n${envStartReplace}`)
           .replace(envEnd, envEndReplace)
           .replace(prodFlag, prodFlagReplace);
 
@@ -100,11 +100,13 @@ function updateEnvironment(): Rule {
 function updateMainTs(): Rule {
   const envImport = `import { environment } from './environments/environment';`;
   const mainStart = `if (environment.production) {`;
+  const mainStartV15 = `platformBrowserDynamic().bootstrapModule(AppModule)`;
   const mainEnd = `.catch(err => console.error(err));`;
 
+  const envDeclImport = `import { Environment } from './environments/environment';`;
   const envImportReplace = `import { bakeEnv } from '@elemental-concept/env-bakery';`;
   const mainStartReplace =
-    `bakeEnv(() => import('./environments/environment')).then((environment: any) => {\n\n${mainStart}`;
+    `bakeEnv(() => import('./environments/environment')).then((environment: Environment) => {\n\n`;
   const mainEndReplace = `${mainEnd}\n\n});`;
 
   return (tree: Tree) => {
@@ -119,11 +121,19 @@ function updateMainTs(): Rule {
 
     if (source.indexOf(envImport) >= 0 && source.indexOf(mainStart) >= 0 && source.indexOf(mainEnd) >= 0) {
       const result = source
-        .replace(envImport, envImportReplace)
-        .replace(mainStart, mainStartReplace)
+        .replace(envImport, `${envImportReplace}\n${envDeclImport}`)
+        .replace(mainStart, `${mainStartReplace}${mainStart}`)
         .replace(mainEnd, mainEndReplace);
 
       tree.overwrite(path, result);
+      console.log(`"${path}" was updated!`);
+    } else if (source.indexOf(mainStartV15) >= 0 && source.indexOf(mainEnd) >= 0) {
+      const result = source
+        .replace(mainStartV15, `${envImportReplace}\n${envDeclImport}\n\n${mainStartReplace}${mainStartV15}`)
+        .replace(mainEnd, mainEndReplace);
+
+      tree.overwrite(path, result);
+
       console.log(`"${path}" was updated!`);
     } else {
       console.log(`File "${path}" does not have familiar code structure, skipping...`);
