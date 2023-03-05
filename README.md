@@ -1,7 +1,6 @@
 # EnvBakery
 
 [![npm version](https://badge.fury.io/js/%40elemental-concept%2Fenv-bakery.svg)](https://badge.fury.io/js/%40elemental-concept%2Fenv-bakery)
-[![Build Status](https://travis-ci.com/elementalconcept/env-bakery.svg?branch=master)](https://travis-ci.com/elementalconcept/env-bakery)
 
 EnvBakery is an extension for Angular framework that loads environment variables from an `.env` file (located
 in `/assets`) into Angular *environment* on application start-up. Normally Angular environment is baked in into the
@@ -200,13 +199,19 @@ The easiest way to use `parbake` is to create a build hook in your `package.json
 
 It will consume environment variables defined in a host OS and will create an `.env` file with their contents. To avoid
 exposing the whole of OS environment to the public, `parbake` requires a whitelist, which can either be specified as a
-command line argument or loaded from a JSON configuration file.
+command line argument or loaded from a JSON configuration file. `parbake` can also be called through `npx`.
 
 Usage:
 
 ```shell
 $ parbake [output] [whitelist]
+$ npx @elemental-concept/env-bakery [output] [whitelist]
+
 $ parbake [output] --config=[filename]
+$ npx @elemental-concept/env-bakery [output] --config=[filename]
+
+$ parbake [output] --json=[environmentJson]
+$ npx @elemental-concept/env-bakery [output] --json=[environmentJson]
 ```
 
 Whitelist is a comma-separated list of environment variable names.
@@ -223,6 +228,13 @@ which in turn should contain a list of strings. For example:
     "FB_API_SECRET"
   ]
 }
+```
+
+Alternatively you can specify required environment variables as a single JSON string using `--json` argument.
+Make sure to escape double quotes correctly! Example:
+
+```shell
+$ npx @elemental-concept/env-bakery src/assets/.env --json='{\"PRODUCTION\": \"true\"}'
 ```
 
 You can also install EnvBakery as a global package and use `parbake` locally to dump your environment into a file.

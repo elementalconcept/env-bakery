@@ -5,7 +5,7 @@
   "useTabs": false,
   "typescript": {
     "quoteStyle": "alwaysSingle",
-    "newLineKind": "system",
+    "newLineKind": "auto",
     "useBraces": "always",
     "bracePosition": "sameLine",
     "singleBodyPosition": "nextLine",
@@ -15,10 +15,11 @@
     "semiColons": "always"
   },
   "json": {
-    "newLineKind": "system"
+    "newLineKind": "auto"
   },
   "markdown": {
-    "emphasisKind": "asterisks"
+    "emphasisKind": "asterisks",
+    "newLineKind": "auto"
   },
   "includes": [
     "**/*.{ts,json,md}"
