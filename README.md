@@ -200,13 +200,19 @@ The easiest way to use `parbake` is to create a build hook in your `package.json
 
 It will consume environment variables defined in a host OS and will create an `.env` file with their contents. To avoid
 exposing the whole of OS environment to the public, `parbake` requires a whitelist, which can either be specified as a
-command line argument or loaded from a JSON configuration file.
+command line argument or loaded from a JSON configuration file. `parbake` can also be called through `npx`.
 
 Usage:
 
 ```shell
 $ parbake [output] [whitelist]
+$ npx @elemental-concept/env-bakery [output] [whitelist]
+
 $ parbake [output] --config=[filename]
+$ npx @elemental-concept/env-bakery [output] --config=[filename]
+
+$ parbake [output] --json=[environmentJson]
+$ npx @elemental-concept/env-bakery [output] --json=[environmentJson]
 ```
 
 Whitelist is a comma-separated list of environment variable names.
@@ -224,6 +230,9 @@ which in turn should contain a list of strings. For example:
   ]
 }
 ```
+
+Alternatively you can specify required environment variables as a single JSON string using `--json` argument.
+Make sure to escape double quotes correctly!
 
 You can also install EnvBakery as a global package and use `parbake` locally to dump your environment into a file.
 
