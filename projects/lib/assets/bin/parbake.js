@@ -4,6 +4,10 @@
 
 const fs = require('fs');
 
+const configArgPrefix = '--config=';
+
+const jsonArgPrefix = '--json=';
+
 function parbakeRunner() {
   if (process.argv.length !== 4) {
     console.log('ERROR: output file name and environment variable whitelist were not specified.\n');
@@ -12,13 +16,11 @@ function parbakeRunner() {
   }
 
   const args = getArguments();
-  const env = collectEnvironment(args.whitelist);
+  const env = args.json !== undefined ? args.json : collectEnvironment(args.whitelist);
   const result = recordToEnvFile(env);
 
   fs.writeFileSync(args.output, result);
 }
-
-const configArgPrefix = '--config=';
 
 function recordToEnvFile(record) {
   return Object.keys(record)
@@ -41,10 +43,24 @@ function collectEnvironment(whitelist) {
 }
 
 function getArguments() {
+  const optionalArg = process.argv[ 3 ];
+
+  if (optionalArg.startsWith(jsonArgPrefix)) {
+    return {
+      output: process.argv[ 2 ],
+      json: getJSONEnv(optionalArg)
+    };
+  }
+
   return {
     output: process.argv[ 2 ],
-    whitelist: getWhitelist(process.argv[ 3 ])
+    whitelist: getWhitelist(optionalArg)
   };
+}
+
+function getJSONEnv(wh) {
+  const json = wh.replace(jsonArgPrefix, '');
+  return JSON.parse(json);
 }
 
 function getWhitelist(wh) {
@@ -74,10 +90,13 @@ function printHelp() {
   console.log('Usage:');
   console.log('    parbake [output] [whitelist]');
   console.log('    or');
-  console.log('    parbake [output] --config=[filename]\n');
+  console.log('    parbake [output] --config=[filename]');
+  console.log('    or');
+  console.log('    parbake [output] --json=[environmentJson]\n');
   console.log('Examples:\n');
   console.log('    parbake src/assets/.env PRODUCTION,API_BASE_URL,FB_API_KEY,FB_API_SECRET\n');
   console.log('    parbake src/assets/.env --config=parbake.json\n');
+  console.log('    parbake src/assets/.env --json=\'{\\"PRODUCTION\\": \\"true\\"}\'\n');
   console.log('Configuration file must be in JSON format, should contain a single object with');
   console.log('a single property called "whitelist", which in turn should contain a list of strings.\n');
   console.log('Example:\n');
@@ -88,7 +107,9 @@ function printHelp() {
     "FB_API_KEY",
     "FB_API_SECRET"
   ]
-}`);
+}\n`);
+  console.log('Alternatively you can specify required environment variables as a single JSON string');
+  console.log('using --json argument. Make sure to escape double quotes correctly!');
 }
 
 parbakeRunner();
