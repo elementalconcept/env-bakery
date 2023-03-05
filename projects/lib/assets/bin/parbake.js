@@ -88,15 +88,15 @@ function getWhitelist(wh) {
 
 function printHelp() {
   console.log('Usage:');
-  console.log('    parbake [output] [whitelist]');
+  console.log('    npx @elemental-concept/env-bakery [output] [whitelist]');
   console.log('    or');
-  console.log('    parbake [output] --config=[filename]');
+  console.log('    npx @elemental-concept/env-bakery [output] --config=[filename]');
   console.log('    or');
-  console.log('    parbake [output] --json=[environmentJson]\n');
+  console.log('    npx @elemental-concept/env-bakery [output] --json=[environmentJson]\n');
   console.log('Examples:\n');
-  console.log('    parbake src/assets/.env PRODUCTION,API_BASE_URL,FB_API_KEY,FB_API_SECRET\n');
-  console.log('    parbake src/assets/.env --config=parbake.json\n');
-  console.log('    parbake src/assets/.env --json=\'{\\"PRODUCTION\\": \\"true\\"}\'\n');
+  console.log('    npx @elemental-concept/env-bakery src/assets/.env PRODUCTION,API_BASE_URL,FB_API_KEY,FB_API_SECRET\n');
+  console.log('    npx @elemental-concept/env-bakery src/assets/.env --config=parbake.json\n');
+  console.log('    npx @elemental-concept/env-bakery src/assets/.env --json=\'{\\"PRODUCTION\\": \\"true\\"}\'\n');
   console.log('Configuration file must be in JSON format, should contain a single object with');
   console.log('a single property called "whitelist", which in turn should contain a list of strings.\n');
   console.log('Example:\n');
