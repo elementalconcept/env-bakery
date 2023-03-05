@@ -47,11 +47,25 @@ function updateEnvironment(): Rule {
   const prodFlag = 'production: false';
 
   const envStartReplace = 'export const environment = () => ({';
+  const envStartReplaceNew = 'export const environment = (): Environment => ({';
   const envEndReplace = '});';
   const prodFlagReplace = `production: getEnv('PRODUCTION').boolean()`;
 
+  const importHeader = `import { getEnv } from '@elemental-concept/env-bakery';\n`;
+  const interfaceDecl = `export type Environment = {\n  production: boolean;\n};\n`;
+
   return (tree: Tree) => {
     const path = 'src/environments/environment.ts';
+
+    if (!tree.exists(path)) {
+      console.log('Environment file was not found, creating empty one.');
+      tree.create(
+        path,
+        [importHeader, interfaceDecl, envStartReplaceNew, `  ${prodFlagReplace}`, envEndReplace].join('\n')
+      );
+      return tree;
+    }
+
     const file = tree.read(path);
     const source = file?.toString();
 
@@ -67,9 +81,9 @@ function updateEnvironment(): Rule {
     if (
       envStartIndex >= 0 && prodFlagIndex > envStartIndex && envEndIndex > envStartIndex && envEndIndex > prodFlagIndex
     ) {
-      const result = `import { getEnv } from '@elemental-concept/env-bakery';\n\n`
+      const result = importHeader + '\n'
         + source
-          .replace(envStart, envStartReplace)
+          .replace(envStart, `${interfaceDecl}\n${envStartReplace}`)
           .replace(envEnd, envEndReplace)
           .replace(prodFlag, prodFlagReplace);
 
@@ -86,11 +100,13 @@ function updateEnvironment(): Rule {
 function updateMainTs(): Rule {
   const envImport = `import { environment } from './environments/environment';`;
   const mainStart = `if (environment.production) {`;
+  const mainStartV15 = `platformBrowserDynamic().bootstrapModule(AppModule)`;
   const mainEnd = `.catch(err => console.error(err));`;
 
+  const envDeclImport = `import { Environment } from './environments/environment';`;
   const envImportReplace = `import { bakeEnv } from '@elemental-concept/env-bakery';`;
   const mainStartReplace =
-    `bakeEnv(() => import('./environments/environment')).then((environment: any) => {\n\n${mainStart}`;
+    `bakeEnv(() => import('./environments/environment')).then((environment: Environment) => {\n\n`;
   const mainEndReplace = `${mainEnd}\n\n});`;
 
   return (tree: Tree) => {
@@ -105,11 +121,19 @@ function updateMainTs(): Rule {
 
     if (source.indexOf(envImport) >= 0 && source.indexOf(mainStart) >= 0 && source.indexOf(mainEnd) >= 0) {
       const result = source
-        .replace(envImport, envImportReplace)
-        .replace(mainStart, mainStartReplace)
+        .replace(envImport, `${envImportReplace}\n${envDeclImport}`)
+        .replace(mainStart, `${mainStartReplace}${mainStart}`)
         .replace(mainEnd, mainEndReplace);
 
       tree.overwrite(path, result);
+      console.log(`"${path}" was updated!`);
+    } else if (source.indexOf(mainStartV15) >= 0 && source.indexOf(mainEnd) >= 0) {
+      const result = source
+        .replace(mainStartV15, `${envImportReplace}\n${envDeclImport}\n\n${mainStartReplace}${mainStartV15}`)
+        .replace(mainEnd, mainEndReplace);
+
+      tree.overwrite(path, result);
+
       console.log(`"${path}" was updated!`);
     } else {
       console.log(`File "${path}" does not have familiar code structure, skipping...`);
