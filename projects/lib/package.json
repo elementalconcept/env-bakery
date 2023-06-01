@@ -1,12 +1,12 @@
 {
   "name": "@elemental-concept/env-bakery",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Loads environment variables from .env file into Angular environment",
   "license": "BSD-2-Clause",
   "private": false,
   "peerDependencies": {
-    "@angular/common": ">= 12 < 17",
-    "@angular/core": ">= 12 < 17"
+    "@angular/common": ">= 12 < 16",
+    "@angular/core": ">= 12 < 16"
   },
   "dependencies": {
     "tslib": "^2.3.0"
