@@ -312,7 +312,7 @@
     alt="Angular Logo"
     src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg=="
   />
-  <span>Welcome to @elemental-concept/env-bakery example app!</span>
+  <span>Welcome to &#64;elemental-concept/env-bakery example app!</span>
     <div class="spacer"></div>
     <a aria-label="Elemental Concept on Twitter" target="_blank" rel="noopener" href="https://twitter.com/elemental_ldn" title="Elemental Concept on Twitter">
       <svg id="twitter-logo" height="24" data-name="Logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
@@ -330,12 +330,12 @@
 
   <!-- Resources -->
   <h2>Quick Start</h2>
-  <p>To start using @elemental-concept/env-bakery:</p>
+  <p>To start using &#64;elemental-concept/env-bakery:</p>
 
   <h3>1. Install the library</h3>
   <!-- Terminal -->
   <div class="terminal">
-    <pre>$ npm i @elemental-concept/env-bakery</pre>
+    <pre>$ npm i &#64;elemental-concept/env-bakery</pre>
   </div>
 
   <h3>2. Create <em>.env</em> file in <em>/assets</em></h3>
@@ -360,12 +360,12 @@
   </p>
   <!-- Terminal -->
   <div class="terminal">
-<pre>import {{ '{' }} getEnv } from '@elemental-concept/env-bakery';
+<pre>import {{ '{' }} getEnv &#125; from '&#64;elemental-concept/env-bakery';
 
 export const environment = () => (
   {{ '{' }}
     production: getEnv('PRODUCTION').boolean()
-  }
+  &#125;
 );</pre>
   </div>
 
@@ -377,26 +377,26 @@ export const environment = () => (
   </p>
   <!-- Terminal -->
   <div class="terminal">
-<pre>import {{ '{' }} enableProdMode } from '@angular/core';
-import {{ '{' }} platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import {{ '{' }} bakeEnv } from '@elemental-concept/env-bakery';
+<pre>import {{ '{' }} enableProdMode &#125; from '&#64;angular/core';
+import {{ '{' }} platformBrowserDynamic &#125; from '&#64;angular/platform-browser-dynamic';
+import {{ '{' }} bakeEnv &#125; from '&#64;elemental-concept/env-bakery';
 
-import {{ '{' }} AppModule } from './app/app.module';
+import {{ '{' }} AppModule &#125; from './app/app.module';
 
 bakeEnv(() => import('./environments/environment')).then((environment: any) => {{ '{' }}
       if (environment.production) {{ '{' }}
     enableProdMode();
-  }
+  &#125;
 
   platformBrowserDynamic()
     .bootstrapModule(AppModule)
     .catch(err => console.error(err));
-});</pre>
+&#125;);</pre>
   </div>
 
   <h3>5. Remove <em>environment.prod.ts</em></h3>
   <p>
-    You don't need <em>environment.prod.ts</em> anymore when using <em>@elemental-concept/env-bakery</em>.
+    You don't need <em>environment.prod.ts</em> anymore when using <em>&#64;elemental-concept/env-bakery</em>.
     Open <em>angular.json</em> and remove <em>environment.prod.ts</em> and <em>environment.ts</em> replacement.
     You can then remove <em>environment.prod.ts</em> from your project.
   </p>
@@ -404,47 +404,47 @@ bakeEnv(() => import('./environments/environment')).then((environment: any) => {
 <pre>"configurations": {{ '{' }}
   "production": {{ '{' }}
     "fileReplacements": []
-  }
-}</pre>
+  &#125;
+&#125;</pre>
   </div>
 
   <h3>6. Don't forget to use <em>environment</em> as a function in your code</h3>
   <div class="terminal">
-<pre>import {{ '{' }} Component } from '@angular/core';
-import {{ '{' }} environment } from '../environments/environment';
+<pre>import {{ '{' }} Component &#125; from '&#64;angular/core';
+import {{ '{' }} environment &#125; from '../environments/environment';
 
-@Component({{ '{' }}
+&#64;Component({{ '{' }}
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: [ './app.component.scss' ]
-})
+&#125;)
 export class AppComponent {{ '{' }}
   readonly firebaseApiKey = environment().firebase.apiKey;
 
   constructor() {{ '{' }}
-    console.log(`Firebase API key is "${{ '{' }} this.firebaseApiKey }".`);
-  }
-}
+    console.log(`Firebase API key is "${{ '{' }} this.firebaseApiKey &#125;".`);
+  &#125;
+&#125;
 </pre>
   </div>
 
   <h3>7. You can also use <em>getEnv()</em></h3>
   <div class="terminal">
-<pre>import {{ '{' }} Component } from '@angular/core';
-import {{ '{' }} environment } from '../environments/environment';
+<pre>import {{ '{' }} Component &#125; from '&#64;angular/core';
+import {{ '{' }} environment &#125; from '../environments/environment';
 
-@Component({{ '{' }}
+&#64;Component({{ '{' }}
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: [ './app.component.scss' ]
-})
+&#125;)
 export class AppComponent {{ '{' }}
   readonly firebaseApiKey = getEnv('FIREBASE_API_KEY').string();
 
   constructor() {{ '{' }}
-    console.log(`Firebase API key is "${{ '{' }} this.firebaseApiKey }".`);
-  }
-}
+    console.log(`Firebase API key is "${{ '{' }} this.firebaseApiKey &#125;".`);
+  &#125;
+&#125;
 </pre>
   </div>
 
