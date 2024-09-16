@@ -50,7 +50,7 @@
     "@typescript-eslint/eslint-plugin": "^6.10.0",
     "@typescript-eslint/parser": "^6.10.0",
     "cpy-cli": "^4.2.0",
-    "dprint": "^0.34.5",
+    "dprint": "^0.47.2",
     "eslint": "^8.53.0",
     "husky": "^8.0.3",
     "jasmine-core": "~4.5.0",
