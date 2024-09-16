@@ -125,27 +125,43 @@ export const environment = () => (
 
 Check API section below on how to use `getEnv()`.
 
-### Update main.ts
+### Update app.module.ts / main.ts
 
-Application bootstrap sequence should be modified to be able to set Angular production mode correctly. Direct
-environment import should be removed and bootstrap sequence should be wrapped into Promise returned by `bakeEnv()`:
+Add `APP_INITIALIZER` to your providers in `app.module.ts` or `main.ts` (if using standalone components):
 
 ```typescript
-import { enableProdMode } from '@angular/core';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 import { bakeEnv } from '@elemental-concept/env-bakery';
 
-import { AppModule } from './app/app.module';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
 
-bakeEnv(() => import('./environments/environment')).then((environment: any) => {
-  if (environment.production) {
-    enableProdMode();
-  }
+// Call bakeEnv to load .env file on start up
+function initializeApp() {
+  return bakeEnv(() => import('../environments/environment'));
+}
 
-  platformBrowserDynamic()
-    .bootstrapModule(AppModule)
-    .catch(err => console.error(err));
-});
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule
+  ],
+  providers: [
+    // Add APP_INITIALIZER to load .env before the app starts
+    {
+      provide: APP_INITIALIZER,
+      useFactory: () => initializeApp,
+      multi: true
+    }
+  ],
+  bootstrap: [AppComponent]
+})
+export class AppModule {
+}
 ```
 
 ### Remove environment.prod.ts
