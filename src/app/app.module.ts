@@ -9,7 +9,7 @@ import { AppComponent } from './app.component';
  * Preferred initialisation example
  */
 function initializeApp() {
-  return bakeEnv(() => import('../environments/environment'));
+  return bakeEnv(() => import('../environments/environment'), '/assets/env.properties');
 }
 
 @NgModule({
