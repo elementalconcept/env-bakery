@@ -11,7 +11,7 @@
     "watch": "ng build lib --watch",
     "test": "ng test lib --watch=false",
     "lint": "ng lint",
-    "publish": "npm publish dist/lib",
+    "publish": "npm publish dist/lib/",
     "parbake": "node projects/lib/assets/bin/parbake.js",
     "format": "dprint fmt",
     "format:check": "dprint check",
