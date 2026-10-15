@@ -127,18 +127,19 @@
             },
             "development": {
               "tsConfig": "projects/lib/tsconfig.lib.json"
+            },
+            "testing": {
+              "tsConfig": "projects/lib/tsconfig.spec.json"
             }
           },
           "defaultConfiguration": "production"
         },
         "test": {
-          "builder": "@angular/build:karma",
+          "builder": "@angular/build:unit-test",
           "options": {
             "tsConfig": "projects/lib/tsconfig.spec.json",
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ]
+            "buildTarget": ":build:testing",
+            "runner": "vitest"
           }
         },
         "lint": {

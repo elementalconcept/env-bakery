@@ -1,14 +1,12 @@
 /* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
   "compilerOptions": {
-    "baseUrl": ".",
     "outDir": "../../dist/lib/schematics",
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
-    "downlevelIteration": true,
     "experimentalDecorators": true,
     "importHelpers": true,
     "useDefineForClassFields": false,
@@ -20,8 +18,8 @@
       "ES2022",
       "dom"
     ],
-    "module": "commonjs",
-    "moduleResolution": "node",
+    "module": "esnext",
+    "moduleResolution": "bundler",
     "noEmitOnError": true,
     "noFallthroughCasesInSwitch": true,
     "noImplicitAny": true,
@@ -36,9 +34,9 @@
     "target": "ES2022"
   },
   "include": [
-    "schematics/**/*"
+    "./schematics/**/*"
   ],
   "exclude": [
-    "schematics/*/files/**/*"
+    "./schematics/*/files/**/*"
   ]
 }
