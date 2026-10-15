@@ -2,7 +2,6 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
     "esModuleInterop": true,
@@ -11,8 +10,8 @@
     "noPropertyAccessFromIndexSignature": true,
     "paths": {
       "@elemental-concept/env-bakery": [
-        "dist/lib/lib",
-        "dist/lib"
+        "./dist/lib/lib",
+        "./dist/lib"
       ]
     },
     "noImplicitReturns": true,

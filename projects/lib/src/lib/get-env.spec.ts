@@ -72,29 +72,29 @@ describe('get-env.ts', () => {
 
     describe('boolean', () => {
       it('should return TRUE', () => {
-        expect(new EnvConverter('true').boolean()).toBeTrue();
-        expect(new EnvConverter('TRUE').boolean()).toBeTrue();
-        expect(new EnvConverter('TrUe').boolean()).toBeTrue();
-        expect(new EnvConverter('t').boolean()).toBeTrue();
-        expect(new EnvConverter('1').boolean()).toBeTrue();
-        expect(new EnvConverter('on').boolean()).toBeTrue();
-        expect(new EnvConverter('enable').boolean()).toBeTrue();
-        expect(new EnvConverter('enabled').boolean()).toBeTrue();
-        expect(new EnvConverter('yes').boolean()).toBeTrue();
+        expect(new EnvConverter('true').boolean()).toBe(true);
+        expect(new EnvConverter('TRUE').boolean()).toBe(true);
+        expect(new EnvConverter('TrUe').boolean()).toBe(true);
+        expect(new EnvConverter('t').boolean()).toBe(true);
+        expect(new EnvConverter('1').boolean()).toBe(true);
+        expect(new EnvConverter('on').boolean()).toBe(true);
+        expect(new EnvConverter('enable').boolean()).toBe(true);
+        expect(new EnvConverter('enabled').boolean()).toBe(true);
+        expect(new EnvConverter('yes').boolean()).toBe(true);
       });
 
       it('should return FALSE', () => {
-        expect(new EnvConverter('false').boolean()).toBeFalse();
-        expect(new EnvConverter('FALSE').boolean()).toBeFalse();
-        expect(new EnvConverter('FaLsE').boolean()).toBeFalse();
-        expect(new EnvConverter('f').boolean()).toBeFalse();
-        expect(new EnvConverter('0').boolean()).toBeFalse();
-        expect(new EnvConverter('off').boolean()).toBeFalse();
-        expect(new EnvConverter('disable').boolean()).toBeFalse();
-        expect(new EnvConverter('disabled').boolean()).toBeFalse();
-        expect(new EnvConverter('no').boolean()).toBeFalse();
-        expect(new EnvConverter('xxx').boolean()).toBeFalse();
-        expect(new EnvConverter('yyy').boolean()).toBeFalse();
+        expect(new EnvConverter('false').boolean()).toBe(false);
+        expect(new EnvConverter('FALSE').boolean()).toBe(false);
+        expect(new EnvConverter('FaLsE').boolean()).toBe(false);
+        expect(new EnvConverter('f').boolean()).toBe(false);
+        expect(new EnvConverter('0').boolean()).toBe(false);
+        expect(new EnvConverter('off').boolean()).toBe(false);
+        expect(new EnvConverter('disable').boolean()).toBe(false);
+        expect(new EnvConverter('disabled').boolean()).toBe(false);
+        expect(new EnvConverter('no').boolean()).toBe(false);
+        expect(new EnvConverter('xxx').boolean()).toBe(false);
+        expect(new EnvConverter('yyy').boolean()).toBe(false);
       });
     });
   });
