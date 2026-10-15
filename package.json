@@ -64,5 +64,13 @@
   },
   "volta": {
     "node": "24.13.0"
+  },
+  "overrides": {
+    "@typescript-eslint/eslint-plugin": {
+      "typescript": "6.0.3"
+    },
+    "@typescript-eslint/parser": {
+      "typescript": "6.0.3"
+    }
   }
 }
